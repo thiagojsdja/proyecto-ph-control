@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PH Control — Medidor de pH con Arduino</title>
+  <meta name="description" content="Proyecto PH Control: medición de pH con Arduino y visualización en tiempo real en la web. Expotec 2025." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <header aria-label="Barra de navegación principal">
+    <div class="nav">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <img src="cambiarporimagen.jpg" alt="Logo Ph Control" />
+        <span>PH Control</span>
+      </a>
+      <nav aria-label="Secciones del sitio">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#fundamentacion">Fundamentación</a></li>
+          <li><a href="#objetivos">Objetivos</a></li>
+          <li><a href="#aplicaciones">Aplicaciones</a></li>
+          <li><a href="#tiempo-real">Medición</a></li>
+          <li><a href="#integrantes">Integrantes</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container hero-inner">
+        <div class="reveal">
+          <h1>PH Control</h1>
+          <p class="muted">"Desarrollo e Implementación de un Medidor de pH de Agua con Arduino” para Expotec 2025.</p>
+          <button class="cta" onclick="document.querySelector('#tiempo-real').scrollIntoView({behavior:'smooth'})" aria-label="Ver medición en vivo">
+            Ver medición en vivo
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="hero-ill reveal" role="img" aria-label="Laboratorio y agua representando el pH"></div>
+      </div>
+    </section>
+
+    <section id="fundamentacion">
+        <div class="container two-col">
+            <div class="panel reveal">
+                <h2>Fundamentación</h2>
+                <p class="muted">
+                    El proyecto <strong>PH Control</strong> nace de la necesidad de contar con herramientas accesibles y precisas para el monitoreo de la calidad del agua. La medición del pH es fundamental en una gran variedad de campos, desde la acuicultura y la agricultura hidropónica hasta procesos industriales y laboratorios educativos.
+                </p>
+                <p class="muted">
+                    Como propuesta para la Expotec, este proyecto integra conocimientos de electrónica con Arduino,  y desarrollo web moderno. Fomenta el trabajo colaborativo y la aplicación práctica de los contenidos aprendidos, creando una solución funcional y de gran utilidad.
+                </p>
+            </div>
+            <div class="panel reveal">
+                <img src="arduinofoto.jpg" alt="Prototipo real del medidor de pH con Arduino" class="foto-proyecto" />
+            </div>
+        </div>
+    </section>
+
+    <section id="objetivos">
+        <div class="container">
+            <div class="panel reveal">
+                <h2>Objetivos</h2>
+                <h3 style="margin-top:6px">Objetivo General</h3>
+                <div class="goal" style="margin:12px 0 18px">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="url(#g1)" stroke-width="2"></circle><path d="M7 12l3 3 7-7" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><defs><linearGradient id="g1" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#0d6efd"/><stop offset="1" stop-color="#00bfff"/></linearGradient><linearGradient id="g2" x1="7" y1="8" x2="17" y2="18"><stop stop-color="#0d6efd"/><stop offset="1" stop-color="#00bfff"/></linearGradient></defs></svg>
+                    <p class="muted" style="margin:0">
+                        “Desarrollar un sistema electrónico basado en Arduino para medir el pH del agua de forma precisa y accesible, con el fin de facilitar el monitoreo de la calidad del agua en contextos educativos, científicos o ambientales.”
+                    </p>
+                </div>
+
+                <h3>Objetivos Específicos</h3>
+                <div class="goals">
+                    <div class="goal"><svg class="animated-check" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 12l3 3 7-7" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><p class="muted" style="margin:0">Diseñar el circuito electrónico necesario para la lectura de datos de un sensor de pH utilizando Arduino.</p></div>
+                    <div class="goal"><svg class="animated-check" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 12l3 3 7-7" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><p class="muted" style="margin:0">Programar el microcontrolador Arduino para procesar, interpretar y mostrar los valores de pH de manera precisa.</p></div>
+                    <div class="goal"><svg class="animated-check" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 12l3 3 7-7" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><p class="muted" style="margin:0">Construir un prototipo funcional que permita medir el pH del agua en tiempo real.</p></div>
+                    <div class="goal"><svg class="animated-check" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 12l3 3 7-7" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><p class="muted" style="margin:0">Validar el funcionamiento del sistema mediante pruebas con muestras de agua de diferentes características.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="escala-ph">
+      <div class="container">
+        <div class="panel reveal">
+          <h2>Explora la Escala de pH</h2>
+          <p class="muted">Pasa el mouse sobre la escala para descubrir ejemplos de sustancias comunes.</p>
+          <div class="ph-scale-container">
+            <div id="ph-info-box">
+              <span id="ph-info-value">pH 7.0</span>
+              <strong id="ph-info-label">Agua Pura</strong>
+            </div>
+            <div class="ph-bar" id="ph-bar"></div>
+            <div class="ph-labels">
+              <span>Ácido</span>
+              <span>Neutro</span>
+              <span>Básico / Alcalino</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="aplicaciones">
+      <div class="container">
+        <div class="panel reveal">
+            <h2>Aplicaciones Prácticas</h2>
+            <div class="cards">
+                <div class="card">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10c-2.22-1.33-4.78-1.33-7 0m-4.24 3.76a2.4 2.4 0 0 0 0 3.48l3.48 3.48a2.4 2.4 0 0 0 3.48 0l3.48-3.48a2.4 2.4 0 0 0 0-3.48zM2 11.5s2-1.5 4-1.5 4 1.5 4 1.5-2 1.5-4 1.5-4-1.5-4-1.5zM22 11.5s-2-1.5-4-1.5-4 1.5-4 1.5 2 1.5 4 1.5 4-1.5 4-1.5z"></path></svg>
+                    <h4 style="margin:8px 0 4px">Acuarios y Piscicultura</h4>
+                    <p class="muted" style="font-size: .9rem;">Controlar el pH es vital para la salud de los peces y ecosistemas acuáticos.</p>
+                </div>
+                <div class="card">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7h-4a3 3 0 0 0-3 3v4z"></path><path d="M12 2a7 7 0 0 0-7 7h4a3 3 0 0 0 3-3V2z"></path><path d="M22 12a7 7 0 0 0-7-7v4a3 3 0 0 0 3 3h4z"></path><path d="M2 12a7 7 0 0 0 7 7v-4a3 3 0 0 0-3-3H2z"></path></svg>
+                    <h4 style="margin:8px 0 4px">Agricultura e Hidroponía</h4>
+                    <p class="muted" style="font-size: .9rem;">El pH del suelo o del agua afecta directamente la absorción de nutrientes de las plantas.</p>
+                </div>
+                <div class="card">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+                    <h4 style="margin:8px 0 4px">Laboratorios Educativos</h4>
+                    <p class="muted" style="font-size: .9rem;">Una herramienta accesible para enseñar conceptos de química de forma práctica.</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tiempo-real">
+      <div class="container realtime">
+        <div class="panel stat reveal">
+          <h2>Medición en Tiempo Real</h2>
+          <div><span id="ph-badge" class="badge neutral">Neutro</span></div>
+          <p id="ph-value" class="ph-value">pH 7.00</p>
+          <p id="ph-status" class="status">Esperando datos...</p>
+          <p class="note">Endpoint: <code id="endpoint-label">http://localhost:5000/ph</code></p>
+          <div class="toolbar">
+            <button id="toggle-sim" class="btn">Simular Datos</button>
+            <button id="force-refresh" class="btn">Actualizar Ahora</button>
+            <button id="copy-endpoint" class="btn">Copiar Endpoint</button>
+          </div>
+          <p id="conn-status" class="note">Conexión: inactiva</p>
+        </div>
+        <div class="panel reveal" aria-label="Gráfico de pH en tiempo real">
+          <canvas id="phChart" height="220"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section id="integrantes">
+      <div class="container">
+        <div class="panel reveal">
+          <h2>Integrantes</h2>
+          <div class="cards">
+            <div class="card">
+              <img class="avatar" src="thiagofoto.jpg" alt="Foto de Thiago Galvan" />
+              <h4 style="margin:8px 0 4px">Thiago Galvan</h4>
+              <p class="role">Líder de Proyecto / Backend</p>
+              <button class="btn-ver-mas" data-modal-target="#modal-thiago">Ver más</button>
+            </div>
+            <div class="card">
+              <img class="avatar" src="ferfoto.jpg" alt="Foto de Fernando Algarin" />
+              <h4 style="margin:8px 0 4px">Fernando Algarin</h4>
+              <p class="role">Diseño de Hardware</p>
+              <button class="btn-ver-mas" data-modal-target="#modal-fernando">Ver más</button>
+            </div>
+            <div class="card">
+              <img class="avatar" src="roberfoto.jpg" alt="Foto de Miryam Rober" />
+              <h4 style="margin:8px 0 4px">Miryam Rober</h4>
+              <p class="role">Documentación y Pruebas</p>
+              <button class="btn-ver-mas" data-modal-target="#modal-miryam">Ver más</button>
+            </div>
+            <div class="card">
+              <img class="avatar" src="cecifoto.jpg" alt="Foto de Cecilia Riquelme" />
+              <h4 style="margin:8px 0 4px">Cecilia Riquelme</h4>
+              <p class="role">Diseño Web / Frontend</p>
+              <button class="btn-ver-mas" data-modal-target="#modal-cecilia">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="panel reveal contact-wrap">
+          <h2>Contacto</h2>
+          <p class="muted">Escríbenos si quieres más información sobre el proyecto o una demo.</p>
+          <form id="contact-form" action="https://formspree.io/f/mqalypkd" method="POST" novalidate>
+            <div class="field"><label for="name">Nombre</label><input id="name" name="name" type="text" placeholder="Tu nombre" required /></div>
+            <div class="field"><label for="email">Email</label><input id="email" name="_replyto" type="email" placeholder="tu@email.com" required /></div>
+            <div class="field"><label for="message">Mensaje</label><textarea id="message" name="message" rows="5" placeholder="Cuéntanos en qué te podemos ayudar" required></textarea></div>
+            <button class="btn primary" type="submit">Enviar</button>
+            <span id="form-status" class="form-status" role="status" aria-live="polite"></span>
+          </form>
+          <p class="note">Tus datos se envían de forma segura mediante Formspree.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <div class="modal" id="modal-thiago">
+    <div class="modal-contenido">
+      <button class="modal-cerrar">&times;</button>
+      <img class="avatar" src="thiagofoto.jpg" alt="Foto de Thiago Galvan" />
+      <h2>Thiago Galvan</h2>
+      <p class="role">Líder de Proyecto / Backend</p>
+      <p class="muted" style="text-align: left;">
+        (Aquí va la descripción de Thiago. Puedes escribir un texto sobre su rol, sus aportes al proyecto, sus intereses, etc.)
+      </p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-fernando">
+    <div class="modal-contenido">
+      <button class="modal-cerrar">&times;</button>
+      <img class="avatar" src="ferfoto.jpg" alt="Foto de Fernando Algarin" />
+      <h2>Fernando Algarin</h2>
+      <p class="role">Diseño de Hardware</p>
+      <p class="muted" style="text-align: left;">
+        (Aquí va la descripción de Fernando. Puedes escribir un texto sobre su rol, sus aportes al proyecto, sus intereses, etc.)
+      </p>
+    </div>
+  </div>
+  
+  <div class="modal" id="modal-miryam">
+    <div class="modal-contenido">
+      <button class="modal-cerrar">&times;</button>
+      <img class="avatar" src="roberfoto.jpg" alt="Foto de Miryam Rober" />
+      <h2>Miryam Rober</h2>
+      <p class="role">Documentación y Pruebas</p>
+      <p class="muted" style="text-align: left;">
+        ¡Hola! Soy Miryam Rober, estudiante del colegio Sagrado Corazón de Jesús – Salesianito, del segundo curso informática. En este proyecto fui quien se ocupó de la conexión y programación del Arduino, además de preparar el informe y coordinar la presentación. Mi objetivo fue siempre impulsar al equipo y representar nuestro trabajo en cada instancia. Me caracterizo por mi compromiso, dedicación y responsabilidad. Con esta experiencia busco seguir creciendo en el área y compartir más proyectos con mis compañeros en un futuro.
+      </p>
+    </div>
+  </div>
+  
+  <div class="modal" id="modal-cecilia">
+    <div class="modal-contenido">
+      <button class="modal-cerrar">&times;</button>
+      <img class="avatar" src="cecifoto.jpg" alt="Foto de Cecilia Riquelme" />
+      <h2>Cecilia Riquelme</h2>
+      <p class="role">Diseño Web / Frontend</p>
+      <p class="muted" style="text-align: left;">
+        Hola! Mi nombre es Cecilia Riquelme, tengo 16 años y actualmente curso el segundo año de Informática en el colegio Salesianito. Me considero una persona empática, con carisma de ayuda y compromiso hacia mis compañeros. Soy responsable, aplicada y siempre busco dar lo mejor de mí en cada tarea que realizo. Me tomo en serio mis responsabilidades y mantengo altas expectativas, buscando siempre la perfección y la mejora continua.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 PH Control - Proyecto Expotec
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
