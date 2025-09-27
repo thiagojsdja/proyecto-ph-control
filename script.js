@@ -191,26 +191,55 @@ document.addEventListener('DOMContentLoaded', () => {
         })();
     })();
 
+
     (function handleContactForm() {
         const form = $("#contact-form");
         if (!form) return;
         const formStatus = $("#form-status");
+        const nameInput = $("#name");
+        const emailInput = $("#email");
+        const messageInput = $("#message");
 
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
+
+            
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const message = messageInput.value.trim();
+
+            if (!name || !email || !message) {
+                formStatus.textContent = "Por favor, completa todos los campos.";
+                formStatus.style.color = "var(--acid)"; 
+                return; 
+            }
+            
+
             formStatus.textContent = "Enviando...";
+            formStatus.style.color = "var(--text)"; 
+
             try {
-                const res = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" } });
+                const res = await fetch(form.action, { 
+                    method: "POST", 
+                    body: new FormData(form), 
+                    headers: { "Accept": "application/json" } 
+                });
+                
                 if (res.ok) {
                     form.reset();
                     formStatus.textContent = "¡Mensaje enviado! Te responderemos pronto.";
+                    formStatus.style.color = "var(--neutral)"; 
                 } else {
                     throw new Error("Respuesta no fue OK");
                 }
             } catch (err) {
                 formStatus.textContent = "No se pudo enviar. Intenta de nuevo más tarde.";
+                formStatus.style.color = "var(--acid)";
             }
-            setTimeout(() => formStatus.textContent = "", 5000);
+
+            setTimeout(() => {
+                formStatus.textContent = "";
+            }, 5000);
         });
     })();
 
