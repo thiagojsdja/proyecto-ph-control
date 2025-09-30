@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             phChart.update("none");
         }
 
-        let isSimulating = false, pollInterval = 2000, pollTimer = null, simTimer = null, simVal = 7.0;
+        let isSimulating = false, pollInterval = 1000, pollTimer = null, simTimer = null, simVal = 7.0;
 
         async function fetchWithTimeout(url, opts = {}, timeout = 4000) {
             const controller = new AbortController();

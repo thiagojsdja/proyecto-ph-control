@@ -87,7 +87,7 @@ section{padding:80px 20px; scroll-margin-top:calc(var(--nav-h) + 10px)}
   width:100%; aspect-ratio:4/3; border-radius:16px;
   background:
     linear-gradient(0deg, rgba(14, 61, 117, 0.08), rgba(14, 61, 117, 0.08)),
-    url(cambiarporimagen.jpg) center/cover no-repeat;
+    url(grupofoto.jpg) center/cover no-repeat;
   border:1px solid rgba(13,110,253,0.18);
   box-shadow:0 14px 40px rgba(13,110,253,0.18);
 }
