@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             phChart.update("none");
         }
 
-        let isSimulating = false, pollInterval = 5000, pollTimer = null, simTimer = null, simVal = 7.0;
+        let isSimulating = false, pollInterval = 2000, pollTimer = null, simTimer = null, simVal = 7.0;
 
         async function fetchWithTimeout(url, opts = {}, timeout = 4000) {
             const controller = new AbortController();
@@ -191,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })();
     })();
 
-
     (function handleContactForm() {
         const form = $("#contact-form");
         if (!form) return;
@@ -203,20 +202,18 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            
             const name = nameInput.value.trim();
             const email = emailInput.value.trim();
             const message = messageInput.value.trim();
 
             if (!name || !email || !message) {
                 formStatus.textContent = "Por favor, completa todos los campos.";
-                formStatus.style.color = "var(--acid)"; 
-                return; 
+                formStatus.style.color = "var(--acid)";
+                return;
             }
-            
 
             formStatus.textContent = "Enviando...";
-            formStatus.style.color = "var(--text)"; 
+            formStatus.style.color = "var(--text)";
 
             try {
                 const res = await fetch(form.action, { 
@@ -228,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (res.ok) {
                     form.reset();
                     formStatus.textContent = "¡Mensaje enviado! Te responderemos pronto.";
-                    formStatus.style.color = "var(--neutral)"; 
+                    formStatus.style.color = "var(--neutral)";
                 } else {
                     throw new Error("Respuesta no fue OK");
                 }
